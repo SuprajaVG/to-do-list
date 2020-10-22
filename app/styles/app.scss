@@ -1,0 +1,96 @@
+$lightTeal: #7cdbdc;
+$blue: #0085d4;
+$emerald: #00a546;
+$white: #ffffff;
+$greenyBlue: #43c6ac;
+$base-font-family: 'SC Sans Web', sans-serif;
+
+.list {
+  display: flex;
+  padding: 15px;
+  background: #80808036;
+  overflow: auto;
+  color: $blue;
+  font-family: 'SC Sans Web', sans-serif;
+  list-style: none;
+  .cards-list-container {
+    margin: 5px 10px;
+    border-radius: 5px;
+    .list-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
+    .delete {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #80808036;
+      background: $greenyBlue;
+      color: $white;
+    }
+    .list-title {
+      border: none;
+      background: none;
+      color: $blue;
+      font-size: 15px;
+      text-transform: uppercase;
+      text-overflow: ellipsis;
+    }
+    .cards-list {
+      display: flex;
+      flex-flow: column;
+      margin-top: 5px;
+      background: #ffffff;
+      padding: 15px 20px;
+      list-style: none;
+      .card {
+        border: 1px solid #80808036;
+        padding: 10px 15px 10px 10px;
+        margin: 15px 0px;
+        display: flex;
+        flex-flow: column;
+        box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.2);
+        .card-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 5px 0;
+        }
+        .card-desc {
+          height: 50px;
+          width: 350px;
+          border: 1px solid #80808036;
+          margin-bottom: 5px;
+        }
+        .comment-input {
+          height: 100px;
+          width: 350px;
+          border-color: #80808036;
+        }
+        .add-comment-btn {
+          width: 30%;
+          height: 30px;
+          border-radius: 5px;
+          border: 1px solid #80808036;
+          margin-top: 5px;
+          background: $greenyBlue;
+          color: $white;
+        }
+        .comments-list {
+          display: flex;
+          flex-flow: column;
+          .comments {
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+    &.new-list-btn {
+      margin-top: 42px;
+      width: 200px;
+    }
+  }
+
+}

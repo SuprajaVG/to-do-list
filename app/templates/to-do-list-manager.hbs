@@ -1,0 +1,45 @@
+{{#each model as |toDoList|}}
+  <div class="list">
+    {{#each toDoList.lists as |list|}}
+      <div class="cards-list-container">
+        <div class="list-header">
+          <input value={{list.listName}} class="list-title"/>
+          <button {{action "deleteList" list}} class="delete">Delete List</button>
+        </div>
+
+        <div class="cards-list">
+            {{#each list.cards as |card|}}
+              <div class="card">
+                <span class="card-header">
+                  <input value={{card.title}} class="list-title"/>
+                  <button {{action "deleteCard" card list}} class="delete">Delete Card</button>
+                </span>
+                <input value={{card.description}} class="card-desc"/>
+                <textarea value="" placeholder="Please enter your comments" class="comment-input"/>
+                <button class="add-comment-btn" {{action "addComment" card}} value="newComment">Add Comment</button>
+                <div class="comments-list">
+                  {{#each card.comments as |comment|}}
+                    <div class="comments">
+                      <p>{{comment.content}}</p>
+                      <p>{{comment.date}}</p>
+                    </div>
+                  {{/each}}
+                </div>
+              </div>
+            {{/each}}
+
+
+          <div class="card" {{action "addNewCard" list}}>
+            Add New Card ...
+          </div>
+        </div>
+      </div>
+
+    {{/each}}
+    <div class="cards-list-container new-list-btn">
+      <div class="cards-list" {{action "addNewList"}}>
+        Add New List ...
+      </div>
+    </div>
+  </div>
+{{/each}}
