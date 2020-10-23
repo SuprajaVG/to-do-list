@@ -22,10 +22,6 @@ module.exports = function(app) {
             {
               "id": "1002",
               "type": "list"
-            },
-            {
-              "id": "1003",
-              "type": "list"
             }
           ]}
       }
@@ -78,27 +74,10 @@ module.exports = function(app) {
         }
       },
       {
-        "id": "1003",
-        "type": "list",
-        "attributes": {
-          "list-name": "Third List"
-        },
-        "relationships": {
-          "cards": {
-            "data": [
-              {
-                "id": "5007",
-                "type": "card"
-              }
-            ]
-          }
-        }
-      },
-      {
         "id": "5001",
         "type": "card",
         "attributes": {
-          "title": "dirty",
+          "title": "First List",
           "description": "This is the first card of list 1"
         },
         "relationships": {
@@ -149,7 +128,7 @@ module.exports = function(app) {
         "id": "5002",
         "type": "card",
         "attributes": {
-          "title": "valid",
+          "title": "Second Card",
           "description": "This is the second card of list 1"
         },
         "relationships": {
@@ -392,48 +371,6 @@ module.exports = function(app) {
         "type": "comment",
         "attributes": {
           "content": "comment 3",
-          "date": "sample"
-        }
-      },
-      {
-        "id": "5007",
-        "type": "card",
-        "attributes": {
-          "title": "third list card 1",
-          "description": "This is the first card of list 3"
-        },
-        "relationships": {
-          "comments": {
-            "data": [
-              {
-                "id": "6019",
-                "type": "comment"
-              },
-              {
-                "id": "6020",
-                "type": "comment"
-              },
-              {
-                "id": "6021",
-                "type": "comment"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "id": "6019",
-        "type": "comment",
-        "attributes": {
-          "content": "comment 1",
-          "date": "sample"
-        }
-      },
-      {
-        "id": "6020",
-        "type": "comment",
-        "attributes": {
-          "content": "comment 2",
           "date": "sample"
         }
       },
