@@ -1,18 +1,30 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+  draggedCard: null,
   actions: {
-    reorderItems(cards, itemModels, draggedModel) {
-      this.set('cards', itemModels);
-      this.set('cards', draggedModel);
+    addDraggedCard(listId, cardId) {
+      this.send('removeDraggedCard', listId, cardId);
+      this.model.forEach(toDoList => {
+        toDoList.lists.forEach(list => {
+          if (list.id === listId) {
+            list.cards.pushObject(this.get('draggedCard'));
+          }
+        });
+      })
     },
-    dragStarted(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    },
-    drop(ev) {
-      ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
+
+    removeDraggedCard(listId, cardId) {
+      var removedCard;
+      this.model.forEach(toDoList => {
+        toDoList.lists.forEach(list => {
+          if (list.cards.filterBy('id', cardId).length) {
+            removedCard = list.cards.filterBy('id', cardId)[0];
+            this.set('draggedCard', removedCard);
+            list.cards.removeObject(removedCard);
+          }
+        });
+      });
     }
   }
 });

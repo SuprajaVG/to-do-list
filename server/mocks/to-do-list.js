@@ -10,7 +10,7 @@ module.exports = function(app) {
       "id": "101",
       "type": "to-do-list",
       "attributes": {
-        "name": "toDoBoard",
+        "name": "To Do Board",
       },
       "relationships": {
         "lists": {

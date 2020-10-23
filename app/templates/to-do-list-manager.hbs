@@ -1,7 +1,13 @@
 {{#each model as |toDoList|}}
+  <div class="to-do-board">
+  <p class="board-name">{{toDoList.name}}</p>
   <div class="list">
+
     {{#each toDoList.lists as |list|}}
-      <div class="cards-list-container">
+
+    {{#draggable-dropzone dropped=(action "addDraggedCard" list.id)}}
+
+      <div class="cards-list-container" id={{list.id}}>
         <div class="list-header">
           <input value={{list.listName}} class="list-title"/>
           <button {{action "deleteList" list}} class="delete">Delete List</button>
@@ -9,23 +15,26 @@
 
         <div class="cards-list">
             {{#each list.cards as |card|}}
+            {{#draggable-item content=card.id}}
+
               <div class="card">
                 <span class="card-header">
                   <input value={{card.title}} class="list-title"/>
                   <button {{action "deleteCard" card list}} class="delete">Delete Card</button>
                 </span>
                 <input value={{card.description}} class="card-desc"/>
-                <textarea value="" placeholder="Please enter your comments" class="comment-input"/>
-                <button class="add-comment-btn" {{action "addComment" card}} value="newComment">Add Comment</button>
+                {{textarea value=card.newComment class="comment-input" placeholder="Please enter your comments"}}
+                <button class="add-comment-btn" {{action "addComment" card}}>Add Comment</button>
                 <div class="comments-list">
                   {{#each card.comments as |comment|}}
                     <div class="comments">
                       <p>{{comment.content}}</p>
-                      <p>{{comment.date}}</p>
                     </div>
                   {{/each}}
                 </div>
               </div>
+              {{/draggable-item}}
+
             {{/each}}
 
 
@@ -34,6 +43,7 @@
           </div>
         </div>
       </div>
+      {{/draggable-dropzone}}
 
     {{/each}}
     <div class="cards-list-container new-list-btn">
@@ -42,4 +52,5 @@
       </div>
     </div>
   </div>
+</div>
 {{/each}}

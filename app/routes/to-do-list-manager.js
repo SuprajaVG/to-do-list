@@ -6,13 +6,9 @@ import { get, set } from '@ember/object';
 
 export default Route.extend({
   store: service(),
+  newComment: null,
   model(params) {
     var toDoData = this.get('store').findAll('to-do-list');
-    toDoData.forEach(item => {
-      item.forEach(list => {
-        console.log(list);
-      })
-    })
     return toDoData;
   },
 
@@ -31,7 +27,6 @@ export default Route.extend({
 
   setupController(controller, model) {
     this._super(controller, model);
-    console.log(model);
   },
   actions: {
     reorderItems(itemModels, draggedModel) {
@@ -70,6 +65,14 @@ export default Route.extend({
     },
 
     addComment(card) {
-    }
+      const newAddedComment = EmberObject.create({
+        "id": Math.random(),
+        "type": "comment",
+        "content": card.newComment
+      });
+      let newCommentModel = this.get('store').createRecord('comment', newAddedComment);
+      card.comments.pushObject(newCommentModel);
+      card.set('newComment', '');
+    },
   }
 })
